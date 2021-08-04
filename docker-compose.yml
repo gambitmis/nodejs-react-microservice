@@ -2,7 +2,7 @@ version: '3'
 services:
     node1:
         build: 
-            context: .
+            context: ./app/node1
             dockerfile: dockerfile.dev
         restart: unless-stopped
         stdin_open: true
@@ -29,7 +29,7 @@ services:
         image: phpmyadmin
         restart: unless-stopped
         depends_on: 
-            - db
+            - mariadb
         environment:
             - PMA_HOSTS=db
         ports:
