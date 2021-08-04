@@ -9,6 +9,15 @@ services:
         tty: true
         ports:
             - "3003:3003"
+    node2:
+        build: 
+            context: ./app/node2
+            dockerfile: dockerfile.dev
+        restart: unless-stopped
+        stdin_open: true
+        tty: true
+        ports:
+            - "3004:3004"
     mariadb:
         build:
             context: ./mariadb
