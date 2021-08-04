@@ -18,6 +18,15 @@ services:
         tty: true
         ports:
             - "3004:3004"
+    front1:
+        build: 
+            context: ./app/front1
+            dockerfile: dockerfile.dev
+        restart: unless-stopped
+        stdin_open: true
+        tty: true
+        ports:
+            - "3005:3005"
     mariadb:
         build:
             context: ./mariadb
