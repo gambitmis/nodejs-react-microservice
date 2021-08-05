@@ -27,31 +27,31 @@ services:
         tty: true
         ports:
             - "3005:3005"
-    mariadb:
-        build:
-            context: ./mariadb
-            dockerfile: dockerfile
-        restart: unless-stopped
-        command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-        environment:
-            MARIADB_ROOT_PASSWORD: password
-            MARIADB_USER: dbadmin
-            MARIADB_PASSWORD: password
-            MARIADB_DATABASE: soccer
-        volumes:
-            - db_data:/var/lib/mysql
- #           - ./mariadb/dump:/docker-entrypoint-initdb.d
-        expose:
-            - "3306"
-    phpmyadmin:
-        image: phpmyadmin
-        restart: unless-stopped
-        depends_on: 
-            - mariadb
-        environment:
-            - PMA_HOSTS=db
-        ports:
-            - "8888:80"
+#     mariadb:
+#         build:
+#             context: ./mariadb
+#             dockerfile: dockerfile
+#         restart: unless-stopped
+#         command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+#         environment:
+#             MARIADB_ROOT_PASSWORD: password
+#             MARIADB_USER: dbadmin
+#             MARIADB_PASSWORD: password
+#             MARIADB_DATABASE: soccer
+#         volumes:
+#             - db_data:/var/lib/mysql
+#  #           - ./mariadb/dump:/docker-entrypoint-initdb.d
+#         expose:
+#             - "3306"
+#     phpmyadmin:
+#         image: phpmyadmin
+#         restart: unless-stopped
+#         depends_on: 
+#             - mariadb
+#         environment:
+#             - PMA_HOSTS=db
+#         ports:
+#             - "8888:80"
     
                     
 networks:
