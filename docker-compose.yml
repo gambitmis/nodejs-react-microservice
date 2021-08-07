@@ -1,26 +1,26 @@
 version: '3'
 services:
-    node1:
+    post:
         build: 
-            context: ./app/node1
+            context: ./app/post
             dockerfile: dockerfile.dev
         restart: unless-stopped
         stdin_open: true
         tty: true
         ports:
             - "3003:3003"
-    node2:
+    comment:
         build: 
-            context: ./app/node2
+            context: ./app/comment
             dockerfile: dockerfile.dev
         restart: unless-stopped
         stdin_open: true
         tty: true
         ports:
             - "3004:3004"
-    front1:
+    web:
         build: 
-            context: ./app/front1
+            context: ./app/web
             dockerfile: dockerfile.dev
         restart: unless-stopped
         stdin_open: true
