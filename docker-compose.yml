@@ -18,9 +18,9 @@ services:
         tty: true
         ports:
             - "3004:3004"
-    bus:
+    event-bus:
         build: 
-            context: ./app/bus
+            context: ./app/event-bus
             dockerfile: dockerfile.dev
         restart: unless-stopped
         stdin_open: true
