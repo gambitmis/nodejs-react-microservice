@@ -25,8 +25,6 @@ app.post('/posts',(req,res) => {
     res.status(201).send([posts[id]]);
 });
 
-
-
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
