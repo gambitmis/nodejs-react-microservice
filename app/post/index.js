@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-const port = 3001;
+const port = 4001;
 
 const posts = {};
 
