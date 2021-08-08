@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-const port = 3004;
+const port = 4002;
 
 const commentByPostId = {};
 

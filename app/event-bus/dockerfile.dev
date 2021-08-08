@@ -4,6 +4,6 @@ RUN apk add --no-cache git
 
 WORKDIR /project
 
-EXPOSE 3005
+EXPOSE 4003
 
 CMD [ "sh" ]
