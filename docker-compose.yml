@@ -18,6 +18,15 @@ services:
         tty: true
         ports:
             - "4002:4002"
+    query:
+        build: 
+            context: ./app/query
+            dockerfile: dockerfile.dev
+        restart: unless-stopped
+        stdin_open: true
+        tty: true
+        ports:
+            - "4003:4003"
     event-bus:
         build: 
             context: ./app/event-bus
