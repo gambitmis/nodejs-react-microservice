@@ -11,7 +11,7 @@ app.post('/events', (req,res) => {
     const event = req.body;
     axios.post('http://post:4001/events',event);
     axios.post('http://comment:4002/events',event);
-    axios.post('http://localhost:4003/events',event);
+    //axios.post('http://localhost:4003/events',event);
 
     res.send({ status: 'OK'});
 });
