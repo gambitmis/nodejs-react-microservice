@@ -27,6 +27,15 @@ services:
         tty: true
         ports:
             - "4003:4003"
+    mod:
+        build: 
+            context: ./app/moderation
+            dockerfile: dockerfile.dev
+        restart: unless-stopped
+        stdin_open: true
+        tty: true
+        ports:
+            - "4004:4004"
     event-bus:
         build: 
             context: ./app/event-bus
