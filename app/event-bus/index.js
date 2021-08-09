@@ -9,9 +9,19 @@ app.use(bodyParser.json());
 
 app.post('/events', (req,res) => {
     const event = req.body;
-    axios.post('http://post:4001/events',event);
-    axios.post('http://comment:4002/events',event);
-    axios.post('http://query:4003/events',event);
+    axios.post('http://post:4001/events',event).catch((err) => {
+        console.log(err.message)
+    });
+    axios.post('http://comment:4002/events',event).catch((err) => {
+        console.log(err.message)
+    });
+    axios.post('http://query:4003/events',event).catch((err) => {
+        console.log(err.message);
+    });
+
+    axios.post('http://mod:4004/events',event).catch((err) => {
+        console.log(err.message);
+    });
 
     res.send({ status: 'OK'});
 });
