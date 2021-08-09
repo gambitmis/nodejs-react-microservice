@@ -35,7 +35,7 @@ services:
         stdin_open: true
         tty: true
         ports:
-            - "4003:4003"
+            - "4004:4004"
     event-bus:
         build: 
             context: ./app/event-bus
