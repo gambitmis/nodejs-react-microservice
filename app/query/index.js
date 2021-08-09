@@ -38,13 +38,13 @@ app.post('/events', (req,res) => {
     if (type === 'PostCreated'){
         const { id, title } = data;
 
-        posts[id] = { id, title, commets: [] }
+        posts[id] = { id, title, comments: [] }
     } else if (type === 'CommentCreated'){
         const { id, content, postId } = data;
 
         const post= posts[postId];
 
-        post.commets.push({ id, content });
+        post.comments.push({ id, content });
     } else {
         console.log('Error Undefine type');
     }
