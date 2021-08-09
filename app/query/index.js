@@ -40,11 +40,12 @@ app.post('/events', (req,res) => {
 
         posts[id] = { id, title, comments: [] }
     } else if (type === 'CommentCreated'){
-        const { id, content, postId } = data;
+        const { id, content, postId, status } = data;
 
         const post= posts[postId];
+      
+        post.commets.push({ id, content , status });
 
-        post.comments.push({ id, content });
     } else {
         console.log('Error Undefine type');
     }
