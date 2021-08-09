@@ -28,6 +28,7 @@ const posts = {};
 // }
 
 app.get('/posts', (req,res) => {
+    console.log('Receive Event', req.body);
     res.send(posts);
 });
 
@@ -38,13 +39,23 @@ app.post('/events', (req,res) => {
     if (type === 'PostCreated'){
         const { id, title } = data;
 
-        posts[id] = { id, title, commets: [] }
+        posts[id] = { id, title, comments: [] }
     } else if (type === 'CommentCreated'){
         const { id, content, postId, status } = data;
-
         const post= posts[postId];
 
         post.commets.push({ id, content , status });
+    } else if (type === 'CommentUpdated'){
+        const { id, content , postId, status } = req.data;
+
+        const post = posts[postId];
+        const comment = post.comments.find(comment => {
+            return comment.id === id;
+        });
+
+        comment.status = status;
+        comment.content = content;
+        
     } else {
         console.log('Error Undefine type');
     }
