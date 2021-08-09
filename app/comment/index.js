@@ -16,6 +16,7 @@ app.get('/posts/:id/comments', (req,res) => {
 });
 
 app.post('/posts/:id/comments', async (req,res) => {
+    console.log('--- start create comment');
     const commentId = randomBytes(4).toString('hex');
     const { content } = req.body;
 
@@ -30,11 +31,15 @@ app.post('/posts/:id/comments', async (req,res) => {
             postId: req.params.id,
             status: 'pending'
         }
+    }).catch((err) => {
+        console.log(err.message);
     });
     res.status(201).send(comments);
+    console.log('--- finish create comment')
 });
 
 app.post('/events', async (req,res) => {
+    console.log('--- Start Recv Events');
     console.log('Receive Event',req.body.type);
 
     const { type, data } = req.body;
@@ -48,7 +53,7 @@ app.post('/events', async (req,res) => {
         });
         comment.status = status;
 
-        await axios.post('http://event-bus:4005', {
+        await axios.post('http://event-bus:4005/events', {
             type: 'CommentUpdated',
             data: {
                 id,
@@ -56,10 +61,13 @@ app.post('/events', async (req,res) => {
                 postId,
                 content
             }
+        }).catch((err) => {
+            console.log(err.message);
         });
     }
 
     res.send({});
+    console.log('--- Finish Recv Events');
 });
 
 app.listen(port, () => {
