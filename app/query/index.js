@@ -43,8 +43,9 @@ app.post('/events', (req,res) => {
     } else if (type === 'CommentCreated'){
         const { id, content, postId, status } = data;
         const post= posts[postId];
-
+      
         post.commets.push({ id, content , status });
+<<<<<<< HEAD
     } else if (type === 'CommentUpdated'){
         const { id, content , postId, status } = req.data;
 
@@ -56,6 +57,9 @@ app.post('/events', (req,res) => {
         comment.status = status;
         comment.content = content;
         
+=======
+
+>>>>>>> 38b0a4c9bf894e0446ae8c0987adf405297d98d5
     } else {
         console.log('Error Undefine type');
     }

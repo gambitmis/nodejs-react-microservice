@@ -18,7 +18,6 @@ app.post('/events', (req,res) => {
     axios.post('http://query:4003/events',event).catch((err) => {
         console.log(err.message);
     });
-
     axios.post('http://mod:4004/events',event).catch((err) => {
         console.log(err.message);
     });
