@@ -9,15 +9,19 @@ app.use(bodyParser.json());
 
 app.post('/events', (req,res) => {
     const event = req.body;
+    console.log('--- start send event to POST');
     axios.post('http://post:4001/events',event).catch((err) => {
         console.log(err.message)
     });
+    console.log('--- start send event to Comment');
     axios.post('http://comment:4002/events',event).catch((err) => {
         console.log(err.message)
     });
+    console.log('--- start send event to Query');
     axios.post('http://query:4003/events',event).catch((err) => {
         console.log(err.message);
     });
+    console.log('--- start send event to Mod');
     axios.post('http://mod:4004/events',event).catch((err) => {
         console.log(err.message);
     });
