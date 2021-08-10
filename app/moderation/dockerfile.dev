@@ -1,0 +1,9 @@
+FROM node:16-alpine 
+
+RUN apk add --no-cache git
+
+WORKDIR /project
+
+EXPOSE 4004
+
+CMD [ "sh" ]
