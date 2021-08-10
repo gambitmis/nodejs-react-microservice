@@ -39,33 +39,33 @@ app.post('/events', (req,res) => {
     console.log('Receive Event',req.body.type);
 
     const { type, data } = req.body;
-    if (type === 'PostCreated'){
-        console.log('Event Postcreated');
-        const { id, title } = data;
+    // if (type === 'PostCreated'){
+    //     console.log('Event Postcreated');
+    //     const { id, title } = data;
 
-        posts[id] = { id, title, comments: [] }
-    } else if (type === 'CommentCreated'){
-        console.log('Event CommentCreated');
-        const { id, content, postId, status } = data;
-        const post= posts[postId];
+    //     posts[id] = { id, title, comments: [] }
+    // } else if (type === 'CommentCreated'){
+    //     console.log('Event CommentCreated');
+    //     const { id, content, postId, status } = data;
+    //     const post= posts[postId];
       
-        post.comments.push({ id, content , status });
-    } else if (type === 'CommentUpdated'){
-        console.log('Event CommentUpdated');
-        const { id, content , postId, status } = data;
+    //     post.comments.push({ id, content , status });
+    // } else if (type === 'CommentUpdated'){
+    //     console.log('Event CommentUpdated');
+    //     const { id, content , postId, status } = data;
 
-        const post = posts[postId];
-        const comment = post.comments.find(comment => {
-            console.log('Find comment.id');
-            return comment.id === id;
-        });
+    //     const post = posts[postId];
+    //     const comment = post.comments.find(comment => {
+    //         console.log('Find comment.id');
+    //         return comment.id === id;
+    //     });
 
-        comment.status = status;
-        comment.content = content;
+    //     comment.status = status;
+    //     comment.content = content;
         
-    } else {
-        console.log('Error Undefine type');
-    }
+    // } else {
+    //     console.log('Error Undefine type');
+    // }
     console.log(posts);
     res.send({})
     console.log('--- finish receive event');
