@@ -12,10 +12,13 @@ const port = 4001;
 const posts = {};
 
 app.get('/posts', (req,res) => {
+    console.log('--- req posts')
     res.send(posts);
+    console.log(posts);
 });
 
 app.post('/posts', async (req,res) => {
+    console.log('--- start create posts');
     const id = randomBytes(4).toString('hex');
     const { title } = req.body;
 
@@ -28,8 +31,11 @@ app.post('/posts', async (req,res) => {
         data: {
             id, title
         }
+    }).catch((err) => {
+        console.log(err.message);
     });
     res.status(201).send([posts[id]]);
+    console.log('--- finish create posts');
 });
 
 app.post('/events', (req,res) => {
