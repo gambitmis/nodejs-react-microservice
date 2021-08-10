@@ -3,7 +3,7 @@ services:
     post:
         build: 
             context: ./app/post
-            dockerfile: dockerfile.dev
+            dockerfile: dockerfile.prod
         restart: unless-stopped
         stdin_open: true
         tty: true
@@ -12,7 +12,7 @@ services:
     comment:
         build: 
             context: ./app/comment
-            dockerfile: dockerfile.dev
+            dockerfile: dockerfile.prod
         restart: unless-stopped
         stdin_open: true
         tty: true
@@ -21,7 +21,7 @@ services:
     query:
         build: 
             context: ./app/query
-            dockerfile: dockerfile.dev
+            dockerfile: dockerfile.prod
         restart: unless-stopped
         stdin_open: true
         tty: true
@@ -30,7 +30,7 @@ services:
     mod:
         build: 
             context: ./app/moderation
-            dockerfile: dockerfile.dev
+            dockerfile: dockerfile.prod
         restart: unless-stopped
         stdin_open: true
         tty: true
@@ -39,7 +39,7 @@ services:
     event-bus:
         build: 
             context: ./app/event-bus
-            dockerfile: dockerfile.dev
+            dockerfile: dockerfile.prod
         restart: unless-stopped
         stdin_open: true
         tty: true
@@ -48,12 +48,12 @@ services:
     web:
         build: 
             context: ./app/web
-            dockerfile: dockerfile.dev
+            dockerfile: dockerfile.prod
         restart: unless-stopped
         stdin_open: true
         tty: true
         ports:
-            - "3000:3000"
+            - "8080:80"
 #     mariadb:
 #         build:
 #             context: ./mariadb
